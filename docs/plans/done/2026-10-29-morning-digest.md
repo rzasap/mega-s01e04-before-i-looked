@@ -1,8 +1,9 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
+closed: 2026-10-30
 ---
 
 # Morning digest
@@ -77,3 +78,19 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+| # | Issue | Blocked by | Worker | Closed |
+|---|-------|-----------|--------|--------|
+| 1 | Digest types: DigestRow and the readNight signature | — | claude-code · opus-5.5 · low | 2026-10-30 |
+| 2 | Run log reader: one row per job, bad lines counted, null owner kept | #1 | claude-code · opus-5.5 · low | 2026-10-30 |
+| 3 | Digest page: GET /digest/:night | #1 | claude-code · sonnet-5.5 · low | 2026-10-30 |
+| 4 | Digest JSON: GET /api/digest/:night | #1 | claude-code · haiku-5.5 · low | 2026-10-30 |
+| 5 | Board link: each night links to its digest with ok / retry / fail counts | #1 | claude-code · sonnet-5.5 · low | 2026-10-30 |
+| 6 | Route tests for the digest page and JSON | #1 | claude-code · haiku-5.5 · default | 2026-10-30 |
+| 7 | Preview for review: save /digest/2026-10-28 as HTML, publish, send to reviewer | #2, #3 | claude-code · opus-5.5 · low | 2026-10-30 |
+| 8 | Clean up: preview without the lane marker, plan to done | #7 | claude-code · opus-5.5 · low | 2026-10-30 |
+
+#7 was closed once before the reviewer had looked and reopened; its "Done when" holds only once the review is in.
+The board's ok count is derived from the rows (runs − retries − jobs whose last status is fail), so a fail that is not a job's last line counts as ok there.
